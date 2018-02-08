@@ -2,12 +2,12 @@
 /// <reference path="{{&.}}" />
 {{/imports}}
 
-import * as request from "superagent";
-import {SuperAgentStatic} from "superagent";
+import * as request from 'superagent';
+import {SuperAgentStatic} from 'superagent';
 
 type CallbackHandler = (err: any, res?: request.Response) => void;
 {{#definitions}}
-type {{&name}} = {{#tsType}}{{> type}}{{/tsType}};
+export type {{&name}} = {{#tsType}}{{> type}}{{/tsType}};
 {{/definitions}}
 
 type Logger = { log: (line: string) => any };
@@ -17,9 +17,9 @@ type Logger = { log: (line: string) => any };
  * @class {{&className}}
  * @param {(string)} [domainOrOptions] - The project domain.
  */
-export default class {{&className}} {
+export class {{&className}} {
 
-    private domain: string = "{{&domain}}";
+    private domain: string = '{{&domain}}';
     private errorHandlers: CallbackHandler[] = [];
 
     constructor(domain?: string, private logger?: Logger) {
@@ -75,3 +75,5 @@ export default class {{&className}} {
 
 {{/methods}}
 }
+
+
